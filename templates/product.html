@@ -1,0 +1,54 @@
+{% extends 'master.html' %}
+{% block title %}
+product page
+{% endblock title %}
+
+{% block body %}
+
+<section id="advertisement">
+    <div class="container">
+        <img src="images/shop/advertisement.jpg" alt="" />
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <div class="row">                            
+            <div class="col-sm-12 padding-right">
+                <div class="features_items"><!--features_items-->
+                    <h2 class="title text-center">Features Items</h2>
+                    {% for prod in product %}
+                    <div class="col-sm-4">
+                        <div class="product-image-wrapper">
+                            <div class="single-products">
+                                    <div class="productinfo text-center">
+                                        <img src="/{{prod.image}}" width="70px" heigth="200px" alt="" />
+                                        <h2>₹{{prod.price}}</h2>
+                                        <p>{{prod.name}}</p>
+                                        <a href="{% url 'cart_add' prod.id %}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                    </div>
+                                    <div class="product-overlay">
+                                        <div class="overlay-content">
+                                            <h2>₹{{prod.price}}</h2>
+                                            <p>{{prod.name}}</p>
+                                            <a href="{% url 'cart_add' prod.id %}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                    <div class="choose">
+                                        <ul class="nav nav-pills nav-justified">
+                                            <li><a href="/product_detail/?item={{prod.id}}"><i class="fa fa-plus-square"></i>View product</a></li>
+                                        </ul>
+                                    </div>
+                            </div>
+                    </div>
+                    {% endfor %}
+                </div><!--features_items-->
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+{% endblock body %}

@@ -1,0 +1,33 @@
+{% extends 'master.html' %}
+{% block title %}
+Login
+{% endblock title %}
+
+{% block body %}
+<section id="form"><!--form-->
+    <div class="container" style="display: flex;
+    justify-content: center;
+    align-items: center;">
+        <div class="col-sm-4">
+            <div class="signup-form"><!--login form-->
+                <h2>New User Signup!</h2>  
+                <form method="post">
+                {% csrf_token %}
+                {% for field in form %}
+                {{field.error}}
+                <label>{{field.label}}</label>
+                <p>{{field}}</p>
+                {% endfor %}
+                    <a href="{% url 'password_reset' %}" style="float:right">Forget Password?</a><br>
+                <button type="submit" class="btn btn-default">LOGIN</button><br>  
+                <div style="display: flex; justify-content: center; align-items: center;">
+                    <a href="{% url 'signup' %}" style="display: flex; justify-content: center; align-items: center; text-align: center; color: black;">
+                      <span>Create a new account &#8594;</span>
+                    </a>
+                  </div>            
+                </form>
+
+        </div>   
+    </div>   
+</section>
+{% endblock body %}
